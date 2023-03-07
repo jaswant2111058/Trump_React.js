@@ -1,219 +1,113 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+ 
+}
+
+.slider {
   
-  .slider {
-    
-    width: px;
-    text-align: center;
-    overflow: hidden;
-    
-  }
+  text-align: center;
+  overflow: hidden;
   
-  .slides {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    
-    
-    
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    
-    /*
-    scroll-snap-points-x: repeat(300px);
-    scroll-snap-type: mandatory;
-    */
-  }
-  .slides::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-  .slides::-webkit-scrollbar-thumb {
-    background:black;
-    border-radius: 10px;
-  }
-  .slides::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .slides > div {
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    width: 145px;
-    height: 200px;
-    margin-right: 0px;
-    border-radius: 10px;
-    background: transparent;
-    transform-origin: center center;
-    transform: scale(1);
-    transition: transform 0.5s;
-    position: relative;
-    border: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  }
-  .author-info {
-    background: rgba(144, 9, 9, 0.75);
-    color: rgb(211, 33, 33);
-    padding: 0.75rem;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    margin: 0;
-  }
-  .author-info a {
-    color: white;
-  }
-  img {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 130px;
-    height: 182px;
-    margin:9px 0px 0px 8px ;
-  }
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.slides::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+.slides::-webkit-scrollbar-thumb {
+  background:black;
+  border-radius: 5px;
+}
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+}
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 76px;
+  height: 106px;
+  margin:3px 0px 0px 0px ;
+}
+.btn{
+  display: inline-flex;
+  width: 5.0rem;
+  height: 7rem;
+  background: wheat;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5%;
+  margin: 1.5rem 0 0.5rem 0rem;
+  position: relative;
+  border:solid 1px;
+}
+
+.Cardlides > div {
+  height: 650px;
+ width: 400px;
+  margin: 15px;
+  border-radius: 10px;
+  align-items: center;
+  background:wheat;
+  position: relative;
+  border:solid 2px;
+  padding: 10px;
+  text-align: center;
+}
+.text{
+margin:-2px ;
+}
+
+.Cardlides{
   
-  .slider > a {
-    display: inline-flex;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: white;
-    text-decoration: none;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin: 0 0 0.5rem 0;
-    position: relative;
-  }
-  button{
-    display: inline-flex;
-    width: 9.5rem;
-    height: 13rem;
-    background: white;
-    text-decoration: none;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5%;
-    margin: 0 0 0.5rem 0;
-    position: relative;
-  }
-  .slider > a:active {
-    top: 1px;
-  }
-  .slider > a:focus {
-    background: #000;
-  }
-  
-  
-  
-   main {
-    height: 100%;
-    overflow: hidden;
-  }
-  main 
-  {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
    
-  }
-  span {
-    height: 100%;
-    overflow: hidden;
-  }
-  span 
-  {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-  }
-  
-  .hand {
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    width: 145px;
-    height: 210px;
-    margin-right: 5px;
-    border-radius: 10px;
-    background:transparent;
-    transform-origin: center center;
-    transform: scale(1);
-    transition: transform 0.5s;
-    position: relative;
-    border: 1px solid burlywood;
-    display: flex;
-    justify-content: center;
-    align-items:end;
-    font-size:18px;
-    margin: 20px 0px 0px 100px;
-  }
-  .handimg {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120px;
-    height: 175px;
-    margin:10px 0px 0px 13px ;
-  }
-  
- 
-  .handslides {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    
-    
-    
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    
-    
-    scroll-snap-points-x: repeat(300px);
-    scroll-snap-type: mandatory;
-  
-  }
-  .handslides::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-  .handslides::-webkit-scrollbar-thumb {
-    background:black;
-    border-radius: 10px;
-  }
-  .handslides::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .handslides > div {
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    width: 145px;
-    height: 210px;
-    margin-right: 5px;
-    border-radius: 10px;
-    background:transparent;
-    transform-origin: center center;
-    transform: scale(1);
-    transition: transform 0.5s;
-    position: relative;
-    border: 1px solid burlywood;
-    display: flex;
-    justify-content: center;
-    align-items:end;
-    font-size:18px;
-    margin: 20px 0px 0px 10px;
-  }
- 
-  
- 
- 
-  
-  
-  
-  
+.chance{
+  width: 5.0rem;
+  height: 7.8rem;
+  background: wheat;
+  border-radius: 5%;
+  margin: 0.5rem 1.2rem .50rem 0rem;
+  border:solid 1px;
+ text-align:center;
+  font-size: 12px;
+  padding: 0px 0px 0px 0px;
+}
+.chance1{
+  display: inline-flex;
+
+}
+.imgChance{
+
+width: 74px;
+height: 104px;
+}
+.hand{
+width: 3.0rem;
+height: 5.5rem;
+background: wheat;
+border-radius: 5%;
+margin: 0rem 0.5rem 0rem 0rem;
+border:solid 1px;
+text-align:center;
+font-size: 12px;
+}
+.imgHand{
+width: 45px;
+height: 70px;
+}
+.HandMain{
+margin-top: 20px;
+display: flex;
+justify-content: center;
+}

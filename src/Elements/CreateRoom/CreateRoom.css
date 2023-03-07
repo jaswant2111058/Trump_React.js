@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+  }
+  
+ 
+  
+  .Roomslides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    
+    
+    
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    
+    /*
+    scroll-snap-points-x: repeat(300px);
+    scroll-snap-type: mandatory;
+    */
+  }
+  .Roomslides::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  .Roomslides::-webkit-scrollbar-thumb {
+    background:black;
+    border-radius: 10px;
+  }
+  .Roomslides::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .Roomslides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 350px;
+    height: 550px;
+    margin: 50px;
+    border-radius: 10px;
+    background:wheat;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+    border: 1px;
+    font-size:17px;
+    text-align: center;
+  }
+ 
+ 
+  .Roomslider > a:active {
+    top: 1px;
+  }
+  .Roomslider > a:focus {
+    background: #000;
+  }
+  .Roomslides{
+    
+    display: flex;
+    justify-content: center;
+  }
+.team1{
+  margin: 0px 0px 0px 30px ;
+  text-align: left;
+}
+  .team2{
+    margin: -117px 30px 0px 0px ;
+    text-align: right;
+  }
+.roomBtn{
+border-radius: 5px;
+background-color: khaki;
+
+}
+  
+  
