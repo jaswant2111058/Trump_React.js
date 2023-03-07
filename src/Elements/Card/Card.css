@@ -52,7 +52,7 @@
 
 .Cardlides > div {
   height: 650px;
- width: 400px;
+ width: 385px;
   margin: 15px;
   border-radius: 10px;
   align-items: center;
@@ -77,7 +77,7 @@ margin:-2px ;
   height: 7.8rem;
   background: wheat;
   border-radius: 5%;
-  margin: 0.5rem 1.2rem .50rem 0rem;
+  margin: 0.5rem 0.5rem .50rem 0rem;
   border:solid 1px;
  text-align:center;
   font-size: 12px;
