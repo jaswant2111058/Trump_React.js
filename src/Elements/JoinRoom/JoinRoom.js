@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import { useState,useMemo,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 const Room=()=>{
-const socket=useMemo(()=>(io.connect('http://localhost:5000')),[]);
+const socket=useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
 const navigate = useNavigate();
 
 

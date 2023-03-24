@@ -7,7 +7,7 @@ const Card = () => {
 
   var localSocket =JSON.parse(localStorage.getItem('socket'))
   console.log(localSocket)
-const socket= useMemo(()=>(io.connect('http://localhost:5000')),[]);
+const socket= useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
 socket.emit('reConnection',localSocket)
 //socket.id=localSocket.id
 socket.playerNo=localSocket.playerNo

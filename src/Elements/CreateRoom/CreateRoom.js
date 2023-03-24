@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import { useState,useMemo,useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 const Room=()=>{
-var socket= useMemo(()=>(io.connect('http://localhost:5000')),[]);
+var socket= useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
     const value=useMemo(()=>(Math.floor(Math.random() * 9000) + 1000),[])
         socket.code = value
     
