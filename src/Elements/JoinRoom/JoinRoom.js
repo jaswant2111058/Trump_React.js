@@ -2,8 +2,8 @@
 import io from "socket.io-client";
 import { useState,useMemo,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-const Room=({setSocket})=>{
-const socket=useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
+const Room=()=>{
+const socket=useMemo(()=>(io.connect('http://localhost:5000')),[]);
 const navigate = useNavigate();
 
 
@@ -32,36 +32,43 @@ const [TrumpPlayer,setTrump]=useState(1)
             setplayer4(player)
         }) 
         socket.on("TrumpPlayer",player=>{
-            
             socket.TrumpPlayer=player
             setTrump(player)
-            
-
         })  
 
             function add()
-            {      var code =document.getElementById("code").value
+            {   
+                var code =document.getElementById("code").value
                 const name =document.getElementById("name").value
                 const player = {
                     name:name,
                     code:code
                 }
+                socket.name = name
                 socket.code = code
-               
             socket.emit("Join",player);
-            
-            
     }
 socket.on('play',async data=>
 {
 
         socket.playerNo=data
-
+        const SocketNext ={
+          id:socket.id,
+          code:socket.code,
+          name:socket.name,
+          player1:player1,
+          player2:player2,
+          player3:player3,
+          player4:player4,
+          playerNo:socket.playerNo,
+          TrumpPlayer:socket.TrumpPlayer
+         }
+      localStorage.setItem('socket',JSON.stringify(SocketNext)) 
         
         //console.log(data)
-       await setSocket(socket)
-        navigate('/selecttrump')
-        
+       //await setSocket(socket)
+       socket.disconnect()
+        navigate('/selecttrump')    
 })
 
     return(

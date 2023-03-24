@@ -1,10 +1,29 @@
 
 import { useState,useMemo, useEffect, useCallback } from "react";
 import { Await,useNavigate } from "react-router-dom";
+import io from "socket.io-client";
 
-const Card = ({socket}) => {
+const Card = () => {
 
- const arr = socket.CardArray.sort((a,b)=>a-b)
+  var localSocket =JSON.parse(localStorage.getItem('socket'))
+  console.log(localSocket)
+const socket= useMemo(()=>(io.connect('http://localhost:5000')),[]);
+socket.emit('reConnection',localSocket)
+//socket.id=localSocket.id
+socket.playerNo=localSocket.playerNo
+socket.code = localSocket.code
+socket.TrumpPlayer = localSocket.TrumpPlayer
+socket.name=localSocket.name
+socket.player=[localSocket.player1,localSocket.player2,localSocket.player3,localSocket.player4]
+socket.player2=localSocket.player2
+socket.player1=localSocket.player1
+socket.player3=localSocket.player3
+socket.player4=localSocket.player4
+socket.CardArray = localSocket.CardArray
+socket.trumpSuit=localSocket.trumpSuit
+
+
+ const arr = localSocket.CardArray.sort((a,b)=>a-b)
   var DrawCard = [];
   const navigate = useNavigate();
   var fax = [];
@@ -33,6 +52,8 @@ const Card = ({socket}) => {
   const [bajji4, setName3] = useState(`./cardimage/0.png`)
   const [handNo, sethandNo] =useState(0);
   const [handyou, sethandyou] =useState(0);
+  const [chaal, setChaal] =useState([]);
+  
 
   //const [hand1,setHand1]=useState()
   
@@ -211,7 +232,8 @@ const Card = ({socket}) => {
       }
      
       function NewGame(){
-        navigate('/');
+        
+        useEffect(()=>( navigate('/')),[])
       }  
 
    
@@ -242,22 +264,23 @@ const Card = ({socket}) => {
 
 
 
-  let Cardclick = async (Cardnum, value) => {
+  let Cardclick = (Cardnum, value) => {
+
+      setChaal([...chaal,Cardnum])
     const data = {
       Cardnum:Cardnum,
       Nextturn:(playerNum+1)%4,
       turn:turn,
       inning:(inning+1)%4,
       count:0,
-      suit:(parseInt((Cardnum-1)/13))
+      suit:(parseInt((Cardnum-1)/13)),
+      chaal:chaal
     }
   // 
-    
   //  socket.emit('PlayCrad',data)
     socket.emit('CheckHand',data)
-   // //console.log(data)
+    console.log(data)
     document.getElementById(`slide-${value}`).style.display = "none";
-
     DrawCard=DrawnCard
    // //console.log(DrawCard)
     var index = DrawCard.indexOf(value-1)
@@ -267,31 +290,32 @@ const Card = ({socket}) => {
     //  //console.log(DrawnCard,data,value)
   }
 
-    socket.on('Hand',data=>{
-
+    socket.on('Hand', data=>{
+      console.log(data)
       chance(data.turn,data.Cardnum)
+      setChaal([...chaal,data.Cardnum])
       setTurn(data.index)
       setInning(data.inning)
       if(data.inning==1)
       {
         setSuit(parseInt((data.Cardnum-1)/13))
       }
-
+      if(playerNum==data.win||((playerNum+2)%4==(data.win))){ 
+        sethandNo(handNo+1)
+     //  console.log()
+       // setTurn(data.index)
+      }
+      else if(data.win==(playerNum+1)%4||(playerNum+3)%4==data.win)
+      {
+        sethandyou(handyou+1)
+      }
       if(data.win!==null)
       {
         setName(`./cardimage/0.png`)
         setName1(`./cardimage/0.png`)
         setName2(`./cardimage/0.png`)
         setName3(`./cardimage/0.png`)
-      }
-      if(playerNum==data.win||((playerNum+2)%4==(data.win))){ 
-        sethandNo(handNo+1)
-       // //console.log(data.index,playerNum)
-       // setTurn(data.index)
-      }
-      else if(data.win==(playerNum+1)%4||(playerNum+3)%4==data.win)
-      {
-        sethandyou(handyou+1)
+        setChaal([])
       }
     })
 
@@ -348,31 +372,31 @@ const Card = ({socket}) => {
           </button> 
            </div>
          </div>
-         <p>Turn {socket.name[turn]}</p>
+         <p>Turn {socket.player[turn]}</p>
          <div className='chance1'>          
            <div className='chance' >
            <img className="imgChance" src={bajji} />
-            <p className="text">{socket.name[0]}</p>
+            <p className="text">{socket.player1}</p>
          </div>
          <div className='chance' >
          <img className="imgChance" src={bajji2} />
-            <p className="text">{socket.name[1]}</p>
+            <p className="text">{socket.player2}</p>
          </div>
         </div>
         <div className='chance1'>          
          <div className='chance' >
          <img className="imgChance" src={bajji3} />
-            <p className="text">{socket.name[2]}</p> 
+            <p className="text">{socket.player3}</p> 
          </div>
          <div className='chance' >
          <img className="imgChance" src={bajji4} />
-            <p className="text">{socket.name[3]}</p>
+            <p className="text">{socket.player4}</p>
          </div>
         </div>
         <div className='HandMain'> 
         {hand}<br></br>
         </div>
-        <h5>{socket.name[playerNum]}</h5>
+        <h5>{socket.name}</h5>
          </div>
          
         </div>

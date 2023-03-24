@@ -1,19 +1,31 @@
-import { useState,useMemo,useCallback } from "react";
+import { useState,useMemo,useCallback,useEffect } from "react";
 import { Await, useNavigate } from "react-router-dom";
+import io from "socket.io-client";
 
-const TrumpSelect = ({socket}) => {
-    const array =[0,0,0,0,]
+const TrumpSelect = () => {
+    var localSocket =JSON.parse(localStorage.getItem('socket'))
+    //   console.log(localSocket)
+     const socket= useMemo(()=>(io.connect('http://localhost:5000')),[]);
+     socket.emit('reConnection',localSocket)
+     //socket.id=localSocket.id
+     socket.playerNo=localSocket.playerNo
+     socket.code = localSocket.code
+     socket.TrumpPlayer = localSocket.TrumpPlayer
+     socket.name=localSocket.name
+     socket.player1=localSocket.player1
+     socket.player2=localSocket.player2
+     socket.player3=localSocket.player3
+     socket.player4=localSocket.player4
+    const array =[0,0,0,0]
     var [CardArray,setCard]= useState(array)  
     const navigate = useNavigate();
     const playerNum = (socket.playerNo-1)%4;
-   const soc= useMemo(()=>(socket.emit("SendCard",socket.code)),[])
+   useMemo(()=>(socket.emit("SendCard",socket.code)),[])
    const[name,setName]=useState()
 socket.on("CardArray",players=>{
-    setCard(players[0])
-    socket.CardArray = players[0]
-    socket.name=[players[1].name1,players[1].name2,players[1].name3,players[1].name4]
-   setName(socket.name[playerNum])
-
+    setCard(players[socket.playerNo-1])
+    socket.CardArray = players[socket.playerNo-1]
+   setName(socket.name)
     if(socket.playerNo!==socket.TrumpPlayer)
     {
       document.getElementById(`suits`).style.display = "none"
@@ -42,10 +54,9 @@ socket.on("CardArray",players=>{
     if(socket.playerNo==socket.TrumpPlayer)
     {
       socket.trumpSuit = suit
-      socket.emit('trumpSuit',suit)
+      socket.emit('trumpSuit',suit) 
      // setfax(`./cardimage/${suit*13}.png`)
     }
-      
   }
 
   socket.on('trumpSuits',suit=>{
@@ -60,18 +71,45 @@ socket.on("CardArray",players=>{
 
     socket.emit('start',(socket.TrumpPlayer)%4)
     socket.turn=(socket.TrumpPlayer)%4
-    
-   
+    const SocketNext ={
+      code:socket.code,
+      name:socket.name,
+      player1:socket.player1,
+      player2:socket.player2,
+      player3:socket.player3,
+      player4:socket.player4,
+      playerNo:socket.playerNo,
+      TrumpPlayer:socket.TrumpPlayer,
+      turn:socket.turn,
+      trumpSuit:socket.trumpSuit,
+      CardArray:socket.CardArray
+     }
+ 
+    localStorage.setItem('socket',JSON.stringify(SocketNext))
+    socket.disconnect()
     navigate('/card')
   }
   //console.log(socket.playerNo,socket.TrumpPlayer)
   socket.on('start',turn=>{
     socket.turn = turn
+    const SocketNext ={
+      code:socket.code,
+      name:socket.name,
+      player1:socket.player1,
+      player2:socket.player2,
+      player3:socket.player3,
+      player4:socket.player4,
+      playerNo:socket.playerNo,
+      TrumpPlayer:socket.TrumpPlayer,
+      turn:socket.turn,
+      trumpSuit:socket.trumpSuit,
+      CardArray:socket.CardArray
+     }
+    localStorage.setItem('socket',JSON.stringify(SocketNext))
+    socket.disconnect()
     navigate('/card')
   })
-
-
-
+  
   return (
     <div >
      <div className="Trumplider">

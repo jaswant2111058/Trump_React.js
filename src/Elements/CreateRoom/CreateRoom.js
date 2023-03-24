@@ -1,9 +1,10 @@
 
 import io from "socket.io-client";
+
 import { useState,useMemo,useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
-const Room=({setSocket})=>{
-var socket= useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
+const Room=()=>{
+var socket= useMemo(()=>(io.connect('http://localhost:5000')),[]);
     const value=useMemo(()=>(Math.floor(Math.random() * 9000) + 1000),[])
         socket.code = value
     
@@ -35,39 +36,40 @@ const [TrumpPlayer,setTrump]=useState(1)
           async  function  add  ()
             {      const Name = await  document.getElementById("name").value
                setplayer1(Name)
-              // setplayer1(Name)
-               
+              // setplayer1(Name) 
                 socket.emit("Create",[Name,socket.code])
-            
-              
             }
         //   socket.emit("Create",code)
-           
-
-
         function play(){
             
             const team ={
                 teams:teamArray,
-                
                 trump:TrumpPlayer
             }
             socket.playerNo = 1
         socket.teams=team.teams
         socket.emit("Essentials",team)
-
-
-        setSocket(socket)
+        const SocketNext ={
+            id:socket.id,
+            code:socket.code,
+            name:player1,
+            player1:player1,
+            player2:player2,
+            player3:player3,
+            player4:player4,
+            playerNo:socket.playerNo,
+            TrumpPlayer:TrumpPlayer
+           }
+        localStorage.setItem('socket',JSON.stringify(SocketNext)) 
+       // setSocket(socket)
+        socket.disconnect()
         navigate('/selecttrump');
     }
     function Switch(){
         setplayer2(player3)
         setplayer3(player2)
-       
         setTeam(Number(teamArray)+1)
-        
     }
-
     function trump(num)
     {
         document.getElementById(`${num}`).style.backgroundColor= "teal";
@@ -119,8 +121,6 @@ const [TrumpPlayer,setTrump]=useState(1)
             </div>
           </div>
         </div>
-
-
                 </>
     
     )
