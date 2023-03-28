@@ -1,5 +1,4 @@
  import { BrowserRouter, Routes, Route} from "react-router-dom";
-import {useState} from "react";
 import Card from "./Elements/Card/Card";
 import Play from "./Elements/Play/Play";
 import CreateRoom from "./Elements/CreateRoom/CreateRoom";
@@ -13,23 +12,20 @@ import './Elements/CreateRoom/CreateRoom.css'
             
 
 function App()
-{    const [socket,setSocket]= useState();
+{   
  
             return (
               <BrowserRouter>
               <Routes>
-              <Route exact path ="/" element={<Play />}/>
-                <Route path ='/card' element={<Card socket={socket}/>}/>
-                <Route path ='/selecttrump' element={<TrumpSelect socket={socket}/>}/>
-                <Route path ='/JoinRoom' element={<JoinRoom setSocket={setSocket}/>}/>
-                <Route path ='/CreateRoom' element={<CreateRoom setSocket={setSocket}/>}/>
+              <Route exact path ="/" element={<Play />}></Route>
+                <Route exact path ='/card' element={<Card/>}></Route>
+                <Route exact path ='/selecttrump' element={<TrumpSelect/>}></Route>
+                <Route exact path ='/JoinRoom' element={<JoinRoom />}></Route>
+                <Route exact path ='/CreateRoom' element={<CreateRoom />}></Route>
               </Routes>
-              
               </BrowserRouter>
-         
- 
-
   );
+
 }
 
 
