@@ -1,4 +1,4 @@
- import { BrowserRouter, Routes, Route} from "react-router-dom";
+ import { BrowserRouter,HashRouter, Routes, Route} from "react-router-dom";
 import Card from "./Elements/Card/Card";
 import Play from "./Elements/Play/Play";
 import CreateRoom from "./Elements/CreateRoom/CreateRoom";
@@ -15,7 +15,7 @@ function App()
 {   
  
             return (
-              <BrowserRouter>
+              <HashRouter>
               <Routes>
               <Route exact path ="/" element={<Play />}></Route>
                 <Route exact path ='/card' element={<Card/>}></Route>
@@ -23,7 +23,7 @@ function App()
                 <Route exact path ='/JoinRoom' element={<JoinRoom />}></Route>
                 <Route exact path ='/CreateRoom' element={<CreateRoom />}></Route>
               </Routes>
-              </BrowserRouter>
+              </HashRouter>
   );
 
 }
