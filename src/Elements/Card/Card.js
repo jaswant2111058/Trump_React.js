@@ -233,7 +233,7 @@ socket.trumpSuit=localSocket.trumpSuit
      
       function NewGame(){
         
-        useEffect(()=>( navigate('/')),[])
+        navigate('/play')
       }  
 
    

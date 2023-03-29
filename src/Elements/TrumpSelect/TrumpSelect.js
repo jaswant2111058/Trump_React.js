@@ -22,7 +22,7 @@ const TrumpSelect = () => {
     const playerNum = (socket.playerNo-1)%4;
    useMemo(()=>(socket.emit("SendCard",socket.code)),[])
    const[name,setName]=useState()
-socket.on("CardArray",players=>{
+    socket.on("CardArray",players=>{
     setCard(players[socket.playerNo-1])
     socket.CardArray = players[socket.playerNo-1]
    setName(socket.name)
@@ -37,7 +37,7 @@ socket.on("CardArray",players=>{
 
 
   var ImgSoure = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     ImgSoure[i + 1] = `./cardimage/${CardArray[i]}.png`
   }
 
@@ -118,19 +118,22 @@ socket.on("CardArray",players=>{
             <h3>
         Your First Four Cards Are
       </h3>
-        <div className="Trumpslider">
-          <div className="Trumpslides">
+        <div className="slider">
+          <div className="slides">
           <button className='btn' id="slide-1">
-            <img className='img' src={ImgSoure[1]} />
+            <img className='imgTrump' src={ImgSoure[1]} />
             </button>
             <button className='btn' id="slide-2" >
-            <img className='img' src={ImgSoure[2]} />
+            <img className='imgTrump' src={ImgSoure[2]} />
              </button>
              <button className='btn' id="slide-3" >
-            <img className='img' src={ImgSoure[3]} />
+            <img className='imgTrump' src={ImgSoure[3]} />
             </button>
             <button className='btn' id="slide-4">
-            <img className='img' src={ImgSoure[4]} />
+            <img className='imgTrump' src={ImgSoure[4]} />
+            </button>
+            <button className='btn' id="slide-4">
+            <img className='imgTrump' src={ImgSoure[5]} />
             </button>
              </div>
            </div>
