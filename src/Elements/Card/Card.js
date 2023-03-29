@@ -6,7 +6,7 @@ import io from "socket.io-client";
 const Card = () => {
 
   var localSocket =JSON.parse(localStorage.getItem('socket'))
-  console.log(localSocket)
+ // console.log(localSocket)
 const socket= useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
 socket.emit('reConnection',localSocket)
 //socket.id=localSocket.id
@@ -291,7 +291,7 @@ socket.trumpSuit=localSocket.trumpSuit
   }
 
     socket.on('Hand', data=>{
-      console.log(data)
+    //  console.log(data)
       chance(data.turn,data.Cardnum)
       setChaal([...chaal,data.Cardnum])
       setTurn(data.index)
