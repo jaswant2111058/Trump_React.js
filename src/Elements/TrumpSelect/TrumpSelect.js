@@ -1,6 +1,8 @@
 import { useState,useMemo,useCallback,useEffect } from "react";
 import { Await, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
+import './TrumpSelect.css'
+
 
 const TrumpSelect = () => {
     var localSocket =JSON.parse(localStorage.getItem('socket'))
@@ -16,7 +18,7 @@ const TrumpSelect = () => {
      socket.player2=localSocket.player2
      socket.player3=localSocket.player3
      socket.player4=localSocket.player4
-    const array =[0,0,0,0]
+    const array =[0,0,0,0,0]
     var [CardArray,setCard]= useState(array)  
     const navigate = useNavigate();
     const playerNum = (socket.playerNo-1)%4;
@@ -32,12 +34,12 @@ const TrumpSelect = () => {
       document.getElementById(`suitsBtn`).style.display = "none"
      }   
   })
-  const[faxs,setfax]=useState(`./cardimage/0.png`)
+  const[faxs,setfax]=useState(`./cardimage/0.jpg`) 
   
 
 
   var ImgSoure = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     ImgSoure[i + 1] = `./cardimage/${CardArray[i]}.png`
   }
 

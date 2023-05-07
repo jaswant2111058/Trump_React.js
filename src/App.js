@@ -4,10 +4,8 @@ import Play from "./Elements/Play/Play";
 import CreateRoom from "./Elements/CreateRoom/CreateRoom";
 import JoinRoom from "./Elements/JoinRoom/JoinRoom";
 import TrumpSelect from "./Elements/TrumpSelect/TrumpSelect";
-import './Elements/Card/Card.css'
-import './Elements/Play/Play.css'
-import './Elements/TrumpSelect/TrumpSelect.css'
-import './Elements/CreateRoom/CreateRoom.css'
+// import './Elements/Card/Card.css'
+
             
 
 function App()

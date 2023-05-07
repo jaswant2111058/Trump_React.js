@@ -1,64 +1,61 @@
 * {
     box-sizing: border-box;
   }
-  
- 
-  
-  .Roomslides {
-    display: flex;
-   
-  }
-  .Roomslides::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-  .Roomslides::-webkit-scrollbar-thumb {
-    background:black;
-    border-radius: 10px;
-  }
-  .Roomslides::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .Roomslides > div {
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    width: 350px;
-    height: 550px;
-    margin: 50px;
-    border-radius: 10px;
-    background:wheat;
-    transform: scale(1);
-    transition: transform 0.5s;
-    position: relative;
-    border: 1px;
-    font-size:17px;
-    text-align: center;
-  }
- 
- 
-  .Roomslider > a:active {
-    top: 1px;
-  }
-  .Roomslider > a:focus {
-    background: #000;
-  }
-  .Roomslides{
-    
+  .Roomslider{
     display: flex;
     justify-content: center;
   }
-.team1{
-  margin: 0px 0px 0px 30px ;
-  text-align: left;
-}
-  .team2{
-    margin: -117px 30px 0px 0px ;
-    text-align: right;
+  .Roomslides  {
+    margin: 50px;
+    border-radius: 10px;
+    border: solid black 2px;
+    padding: 15px;
+    font-size:17px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 .roomBtn{
-border-radius: 5px;
-background-color: khaki;
-
+  color: aliceblue;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color:black;
+ margin-top: 10px;
 }
-  
-  
+
+.content{
+ text-align: center;
+ width: 150px;
+ height: 120px;
+ 
+ align-items: center;
+}
+.content h1,h3{
+  margin-top: -10px;
+  background-color: aliceblue;
+  border: solid black 1px;
+  border-radius: 10px;
+}
+#name{
+  font-size: 15px;
+  border-radius: 15px;
+  height: 2.5rem;
+  background-color: aliceblue;
+  width: 200px;
+  border: solid black 2px;
+  margin-top: -20px;
+  text-align: center;
+}
+.teams{
+  margin-top: 10px;
+}
+.cr-slide{
+  display: flex;
+  justify-content: center;
+}
+#create{
+  margin-top: -10px;
+  background-color: aliceblue;
+  border: solid black 1px;
+  border-radius: 10px;
+}

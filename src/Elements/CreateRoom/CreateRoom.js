@@ -1,8 +1,11 @@
 
 import io from "socket.io-client";
-
 import { useState,useMemo,useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import './CreateRoom.css'
+
+
+
 const Room=()=>{
 var socket= useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
     const value=useMemo(()=>(Math.floor(Math.random() * 9000) + 1000),[])
@@ -36,7 +39,7 @@ const [TrumpPlayer,setTrump]=useState(1)
           async  function  add  ()
             {      const Name = await  document.getElementById("name").value
                setplayer1(Name)
-              // setplayer1(Name) 
+              // setplayer1(Name)
                 socket.emit("Create",[Name,socket.code])
             }
         //   socket.emit("Create",code)
@@ -72,11 +75,13 @@ const [TrumpPlayer,setTrump]=useState(1)
     }
     function trump(num)
     {
-        document.getElementById(`${num}`).style.backgroundColor= "teal";
-        setTrump(num)
-        socket.TrumpPlayer=num
-        socket.emit('TrumpPlayer',num)
-         
+        document.getElementById(`${num%4}`).style.backgroundColor= "red";
+        document.getElementById(`${(num+1)%4}`).style.backgroundColor= "black";
+        document.getElementById(`${(num+2)%4}`).style.backgroundColor= "black";
+        document.getElementById(`${(num+3)%4}`).style.backgroundColor= "black";
+        setTrump(num+1)
+        socket.TrumpPlayer=num+1
+        socket.emit('TrumpPlayer',num+1)   
     }
     
 
@@ -84,40 +89,46 @@ const [TrumpPlayer,setTrump]=useState(1)
                 <>
         <div className="Roomslider">
           <div className="Roomslides">
-            <div id="slide-1">
-              <p>CREATE ROOM</p>
-              <h4>CODE</h4>
+            <div id="slide">
+                <div className="cr-slide">
+                <div className="content">
+              <p id='create'>CREATE ROOM</p>
+              <h3>CODE</h3>
                 <h1>{socket.code}</h1>
+                </div>
+                </div>
                 <input id='name' placeholder="Enter your name" required></input>
-                <br>
-                </br>
-                <button className='roomBtn' onClick={add}> Join Game</button>
+                <div>
+                <button className='roomBtn' onClick={add}> Join Game</button> 
+                </div>
+               
+                <div className='teams'>
                 <div className='team1'>
                 <p>TEAM 1</p>
                 <p>{player1}</p>
                 <p>{player2}</p>
                 </div>
-                
                <div className='team2'>
                <p>TEAM 2</p>
                 <p>{player3}</p>
                 <p>{player4}</p>
                </div>
+               </div>
+               <div>
                <button className='roomBtn' onClick={Switch}>
                 Switch Players
                </button>
-               <br></br>
+               </div>
                <p>WHICH PLAYER WILL THE TRUMP SUIT</p>
-               <button className='roomBtn' id='1' onClick={()=>{trump(1)}}>1</button>
-               <button className='roomBtn' id='2' onClick={()=>{trump(2)}}>2</button>
-               <button className='roomBtn' id='3' onClick={()=>{trump(3)}}>3</button>
-               <button className='roomBtn' id='4' onClick={()=>{trump(4)}}>4</button>
-               <br></br>
-               <br>
-               </br>
+               <button className='roomBtn' id='0' onClick={()=>{trump(0)}}>1</button>
+               <button className='roomBtn' id='1' onClick={()=>{trump(1)}}>2</button>
+               <button className='roomBtn' id='2' onClick={()=>{trump(2)}}>3</button>
+               <button className='roomBtn' id='3' onClick={()=>{trump(3)}}>4</button>
+               <div>
                <button className='roomBtn' onClick={play}>
                PLAY
                </button>
+               </div>
             </div>
           </div>
         </div>

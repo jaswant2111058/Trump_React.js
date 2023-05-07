@@ -1,6 +1,7 @@
 
 
 import { useNavigate } from "react-router-dom";
+import './Play.css'
 const Play=()=>{
 
 const navigate = useNavigate();
@@ -13,9 +14,9 @@ const navigate = useNavigate();
     }
     return(
                 <>
-        <div className="Playlider">
+      
           <div className="Playlides">
-            <div id="slide-1">
+            <div className="PlayCard">
               <p>Trup Card By Jassi</p>
               <h5>To Play Join A Room Or Create A Room</h5>
                 <br>
@@ -27,9 +28,6 @@ const navigate = useNavigate();
                 <button className='JoinBtn' onClick={join}> Join Room</button>
                 </div>
           </div>
-        </div>
-
-
                 </>
     
     )

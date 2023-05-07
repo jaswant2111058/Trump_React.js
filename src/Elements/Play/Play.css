@@ -1,61 +1,48 @@
 * {
     box-sizing: border-box;
+   
   }
-  
- 
-  
-  .Playlides {
-    display: flex;
+  body{
+    background-image: url('BGCard.avif');
 
   }
-  .Playlides::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+  .Playlides  {
+    display: flex;
+  justify-content: center;
   }
-  .Playlides::-webkit-scrollbar-thumb {
-    background:black;
+
+  .PlayCard >h5{
+  
     border-radius: 10px;
+    background-color: aliceblue;
+
   }
-  .Playlides::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .Playlides > div {
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    width: 350px;
-    height: 550px;
-    margin: 50px;
+  .PlayCard > p{
     border-radius: 10px;
-    background:wheat;
-    transform: scale(1);
-    transition: transform 0.5s;
-    position: relative;
-    border: 1px;
+    background-color: aliceblue; 
+  }
+ 
+ .PlayCard{
+  border-radius: 20px;
+    padding: 20px;
+    border: solid black 2px;
     font-size:17px;
     text-align: center;
-  }
- 
- 
-  .Playlider > a:active {
-    top: 1px;
-  }
-  .Playlider > a:focus {
-    background: #000;
-  }
-  .Playlides{
-    
-    display: flex;
-    justify-content: center;
-  }
+    margin-top: 10rem;
+ }
 
 .CreateBtn{
-border-radius: 5px;
-background-color: khaki;
+  color: aliceblue;
+  font-size: 35px;
+  border-radius: 15px;
+  background-color:black;
 
 }
 .JoinBtn{
-    border-radius: 5px;
-    background-color: khaki;
+    color: aliceblue;
+    font-size: 35px;
+    border-radius: 15px;
+    background-color:black;
     
     }
      

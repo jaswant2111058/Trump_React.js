@@ -2,6 +2,7 @@
 import { useState,useMemo, useEffect, useCallback } from "react";
 import { Await,useNavigate } from "react-router-dom";
 import io from "socket.io-client";
+import './Card.css'
 
 const Card = () => {
 
@@ -41,6 +42,7 @@ socket.trumpSuit=localSocket.trumpSuit
   var disabledValue12 = (true);
   var disabledValue13 = (true);
   
+
   const playerNum = (socket.playerNo-1)%4;
   const[DrawnCard,setDrawnCard] = useState([0,1,2,3,4,5,6,7,8,9,10,11,12])
   const [suit, setSuit] = useState()
@@ -56,12 +58,12 @@ socket.trumpSuit=localSocket.trumpSuit
   
 
   //const [hand1,setHand1]=useState()
-  
     //  setArray(socket.CardArray);
      // setArray(arr.sort(function(a, b){return a - b}) )
    //  //console.log(DrawnCard)
    //console.log(socket.trumpSuit,suit,DrawnCard,playerNum,inning)
 
+   
   if (playerNum == turn && inning==0)
   {
     disabledValue1 = (false);
@@ -209,7 +211,6 @@ socket.trumpSuit=localSocket.trumpSuit
         <img className='imgHand' src="./cardimage/Card_hand.png" />
         <p className='text'>Hand {i}</p>
       </div>
-     
       </>
     )
   }

@@ -2,10 +2,10 @@
 import io from "socket.io-client";
 import { useState,useMemo,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-const Room=()=>{
+import './JoinRoom.css'
+const JoinRoom=()=>{
 const socket=useMemo(()=>(io.connect('https://trump-cards.onrender.com')),[]);
 const navigate = useNavigate();
-
 
 
 const [player1,setplayer1]=useState("player1")
@@ -73,33 +73,33 @@ socket.on('play',async data=>
 
     return(
                 <>
-        <div className="Roomslider">
-          <div className="Roomslides">
-            <div id="slide-1">
-              <p>JOIN ROOM</p>
-              <h4>ENTER ROOM CODE</h4>
-              <input id='code' placeholder="Enter Room Code" required></input>
-                <br></br><br></br>
-                <input id='name' placeholder="Enter your name" required></input>
-                <br>
-                </br>
-                <br></br>
-                <button className='roomBtn' onClick={add}> Join Game</button>
+        <div className="JoinRoomslider">
+          <div className="JoinRoomslides">
+            <div id="slide">
+              <p>JOIN Room</p>
+                <div className="teams">
                 <div className='team1'>
                 <p>TEAM 1</p>
                 <p>{player1}</p>
                 <p>{player2}</p>
                 </div>
-                
                <div className='team2'>
                <p>TEAM 2</p>
                 <p>{player3}</p>
                 <p>{player4}</p>
                </div>
-              <p>TRUMP SUIT WILL SELECT BY<br></br> PLAYER NO. {TrumpPlayer}</p>
+               </div>
+              <p>TRUMP SUIT WILL SELECT BY<br></br> PLAYER NO.{TrumpPlayer}</p>
+              <h4>ENTER Room CODE</h4>
+              <input id='code' placeholder="Enter JoinRoom Code" required></input>
+                <br></br><br></br>
+                <input id='name1' placeholder="Enter your name" required></input>
+                <br></br>
+                <br></br>
+              <button className='JoinRoomBtn' onClick={add}>Join Game</button>
             </div>
           </div>
-        </div>
+          </div>
 
 
                 </>
@@ -107,5 +107,5 @@ socket.on('play',async data=>
     )
 }
 
-export default Room;
+export default JoinRoom;
 

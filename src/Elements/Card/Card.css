@@ -40,7 +40,7 @@
   display: inline-flex;
   width: 5.0rem;
   height: 7rem;
-  background: wheat;
+  background: transparent;
   text-decoration: none;
   align-items: center;
   justify-content: center;
@@ -56,7 +56,7 @@
   margin: 15px;
   border-radius: 10px;
   align-items: center;
-  background:wheat;
+  background:transparent;
   position: relative;
   border:solid 2px;
   padding: 10px;
@@ -75,7 +75,7 @@ margin:-2px ;
 .chance{
   width: 5.0rem;
   height: 7.8rem;
-  background: wheat;
+  background:transparent;
   border-radius: 5%;
   margin: 0.5rem 0.5rem .50rem 0rem;
   border:solid 1px;
@@ -95,7 +95,7 @@ height: 104px;
 .hand{
 width: 3.0rem;
 height: 5.5rem;
-background: wheat;
+background:black;
 border-radius: 5%;
 margin: 0rem 0.5rem 0rem 0rem;
 border:solid 1px;

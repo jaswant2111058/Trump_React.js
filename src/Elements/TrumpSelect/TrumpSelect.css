@@ -5,7 +5,6 @@
   margin: 15px;
   border-radius: 10px;
   align-items: center;
-  background:wheat;
   position: relative;
   border:solid 2px;
   padding: 10px;
@@ -18,12 +17,14 @@
   display: flex;
   justify-content: center;
 }
+.Trumplides > div > h3{
+margin-top: 10px;
+}
 .start{
-  height: 30px;
-  width: 75px;
-  font-size: larger;
-  border-radius: 10px;
-  background-color:antiquewhite;
+  color: aliceblue;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color:black;
  
 }
 .imgTrump{
