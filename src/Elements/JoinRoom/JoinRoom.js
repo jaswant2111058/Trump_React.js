@@ -39,7 +39,7 @@ const [TrumpPlayer,setTrump]=useState(1)
             function add()
             {   
                 var code =document.getElementById("code").value
-                const name =document.getElementById("name").value
+                const name =document.getElementById("name1").value
                 const player = {
                     name:name,
                     code:code
