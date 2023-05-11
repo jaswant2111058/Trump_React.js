@@ -48,10 +48,10 @@ socket.trumpSuit=localSocket.trumpSuit
   const [suit, setSuit] = useState()
   const [turn, setTurn] = useState((socket.TrumpPlayer-1)%4)
   const [inning, setInning] = useState(0)
-  const [bajji, setName] =   useState(`./cardimage/0.png`)
-  const [bajji2, setName1] = useState(`./cardimage/0.png`)
-  const [bajji3, setName2] = useState(`./cardimage/0.png`)
-  const [bajji4, setName3] = useState(`./cardimage/0.png`)
+  const [bajji, setName] =   useState(`./cardimage/0.jpg`)
+  const [bajji2, setName1] = useState(`./cardimage/0.jpg`)
+  const [bajji3, setName2] = useState(`./cardimage/0.jpg`)
+  const [bajji4, setName3] = useState(`./cardimage/0.jpg`)
   const [handNo, sethandNo] =useState(0);
   const [handyou, sethandyou] =useState(0);
   const [chaal, setChaal] =useState([]);
@@ -208,7 +208,7 @@ socket.trumpSuit=localSocket.trumpSuit
     hand[i] = (
       <>
       <div className='hand'>
-        <img className='imgHand' src="./cardimage/Card_hand.png" />
+        <img className='imgHand' src="./cardimage/Card_hand.jpg" />
         <p className='text'>Hand {i}</p>
       </div>
       </>
@@ -312,11 +312,16 @@ socket.trumpSuit=localSocket.trumpSuit
       }
       if(data.win!==null)
       {
-        setName(`./cardimage/0.png`)
-        setName1(`./cardimage/0.png`)
-        setName2(`./cardimage/0.png`)
-        setName3(`./cardimage/0.png`)
-        setChaal([])
+        setTimeout(()=>{
+
+          setName(`./cardimage/0.jpg`)
+          setName1(`./cardimage/0.jpg`)
+          setName2(`./cardimage/0.jpg`)
+          setName3(`./cardimage/0.jpg`)
+          setChaal([])
+
+        },2000)
+
       }
     })
 
@@ -373,7 +378,7 @@ socket.trumpSuit=localSocket.trumpSuit
           </button> 
            </div>
          </div>
-         <p>Turn {socket.player[turn]}</p>
+         <p className="nextTurn">Turn {socket.player[turn]}</p>
          <div className='chance1'>          
            <div className='chance' >
            <img className="imgChance" src={bajji} />
@@ -399,7 +404,6 @@ socket.trumpSuit=localSocket.trumpSuit
         </div>
         <h5>{socket.name}</h5>
          </div>
-         
         </div>
       </div>
     </div>

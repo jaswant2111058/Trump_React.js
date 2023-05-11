@@ -12,6 +12,7 @@ const [player1,setplayer1]=useState("player1")
 const [player2,setplayer2]=useState("player2")
 const [player3,setplayer3]=useState("player3")
 const [player4,setplayer4]=useState("player4")
+const [isloading,setLoading]=useState(false)
 const [TrumpPlayer,setTrump]=useState(1)
     
         socket.on("SetPlayer1",player=>{
@@ -72,8 +73,9 @@ socket.on('play',async data=>
 })
 
     return(
-                <>
-        <div className="JoinRoomslider">
+        <>
+        <div className="wraper">
+        <div className="JoinRoomslider" >
           <div className="JoinRoomslides">
             <div id="slide">
               <p>JOIN Room</p>
@@ -100,10 +102,9 @@ socket.on('play',async data=>
             </div>
           </div>
           </div>
-
-
-                </>
-    
+          {/* <img className="loader" src="./cardimage/LodingGIF2.gif" /> */}
+       </div>
+          </>
     )
 }
 

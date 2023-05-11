@@ -63,7 +63,7 @@
   text-align: center;
 }
 .text{
-margin:-2px ;
+margin:-2px;
 }
 
 .Cardlides{
@@ -95,7 +95,7 @@ height: 104px;
 .hand{
 width: 3.0rem;
 height: 5.5rem;
-background:black;
+background:aliceblue;
 border-radius: 5%;
 margin: 0rem 0.5rem 0rem 0rem;
 border:solid 1px;
@@ -110,4 +110,10 @@ height: 70px;
 margin-top: 20px;
 display: flex;
 justify-content: center;
+}
+.nextTurn{
+  background-color: aliceblue;
+  width: 200px;
+  border-radius: 10px;
+  margin-left: 75px;
 }
